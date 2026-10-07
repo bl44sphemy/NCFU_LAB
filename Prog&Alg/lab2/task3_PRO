@@ -1,0 +1,29 @@
+#include <iostream>
+
+// ВАРИАНТ 9
+
+int main(){
+    int x1;
+    int y1;
+
+    std::cout << "Введите значение первой переменной: " << std::endl;
+    std::cin >> x1;
+
+    std::cout << "Введите значение второй переменной: " << std::endl;
+    std::cin >> y1;
+
+    double x2 = static_cast<double>(x1);
+    double y2 = static_cast<double>(y1);
+
+    std::cout << "Сравнение арифметических операций INT и DOUBLE" << std::endl;
+
+    std::cout << "1. Сумма     INT: " << x1 + y1 << "     DOUBLE: " << x2 + y2 << std::endl;
+
+    std::cout << "2. Разность     INT: " << x1 - y1 << "     DOUBLE: " << x2 - y2 << std::endl;
+
+    std::cout << "3. Произведение     INT: " << x1 * y1 << "     DOUBLE: " << x2 * y2 << std::endl;
+
+    std::cout << "4. Частное     INT: " << x1 / y1 << "     DOUBLE: " << x2 / y2 << std::endl;
+
+    return 0;
+}
