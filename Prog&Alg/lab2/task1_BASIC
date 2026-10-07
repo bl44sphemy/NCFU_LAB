@@ -1,1 +1,15 @@
+#include <iostream>
 
+int main() {
+  double meters;
+  double kilometers;
+
+  std::cout << "Введите расстояние в километрах: " << std::endl;
+  std::cin >> kilometers;
+
+  meters = kilometers * 1000;
+
+  std::cout << "Расстояние в метрах составляет " << meters << " метров" << std::endl;
+
+  return 0;
+}
