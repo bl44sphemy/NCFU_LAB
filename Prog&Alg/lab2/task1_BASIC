@@ -1,5 +1,7 @@
 #include <iostream>
 
+// ВАРИАНТ 9
+
 int main() {
   int meters;
   double kilometers;
