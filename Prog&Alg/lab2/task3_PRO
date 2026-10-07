@@ -17,13 +17,13 @@ int main(){
 
     std::cout << "Сравнение арифметических операций INT и DOUBLE" << std::endl;
 
-    std::cout << "1. Сумма     INT: " << x1 + y1 << "     DOUBLE: " << x2 + y2 << std::endl;
+    std::cout << "1. Сумма            INT: " << x1 + y1 << "     DOUBLE: " << x2 + y2 << std::endl;
 
-    std::cout << "2. Разность     INT: " << x1 - y1 << "     DOUBLE: " << x2 - y2 << std::endl;
+    std::cout << "2. Разность         INT: " << x1 - y1 << "     DOUBLE: " << x2 - y2 << std::endl;
 
     std::cout << "3. Произведение     INT: " << x1 * y1 << "     DOUBLE: " << x2 * y2 << std::endl;
 
-    std::cout << "4. Частное     INT: " << x1 / y1 << "     DOUBLE: " << x2 / y2 << std::endl;
+    std::cout << "4. Частное          INT: " << x1 / y1 << "     DOUBLE: " << x2 / y2 << std::endl;
 
     return 0;
 }
