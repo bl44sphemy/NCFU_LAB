@@ -1,6 +1,5 @@
 #include <iostream>
 
-//ВАРИАНТ 9
 
 int main() {
     
@@ -10,20 +9,20 @@ int main() {
     double V;
     double Spov;
 
-    std::cout << "Введите ширину параллелепипеда: " << std::endl;
+    std::cout << "Enter the width of the parallelepiped: " << std::endl;
     std::cin >> width;
 
-    std::cout << "Введите длину параллелепипеда: "  << std::endl;
+    std::cout << "Enter the length of the parallelepiped: "  << std::endl;
     std::cin >> length;
 
-    std::cout << "Введите высоту параллелепипеда: " << std::endl;
+    std::cout << "Enter the height of the parallelepiped: " << std::endl;
     std::cin >> height;
 
     V = width * height * length;
     Spov = 2*(length*width) + ((length+width)*2)*height;
 
-    std::cout << "Объем параллелепипеда: " << V << std::endl; 
-    std::cout << "Площадь поверхности параллелепипеда: " << Spov << std::endl;
+    std::cout << "The volume of a parallelepiped: " << V << std::endl; 
+    std::cout << "The surface area of a parallelepiped: " << Spov << std::endl;
 
     return 0;
 }
