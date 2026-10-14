@@ -1,1 +1,33 @@
+#include <iostream>
 
+int main(){
+    
+    int x, y, z; // числа вводимые пользователем
+    
+    std::cout << "Enter 3 integer numbers: \n";
+    std::cin >> x >> y >> z;
+    
+    // X VARIATIONS
+    if (x > y && y > z){
+        std::cout << z << " " << y << " " << x;
+    } 
+    else if (x > z && z > y){
+        std::cout << y << " " << z << " " << x;
+    }
+    // Y VARIATIONS
+    else if (y > x && x > z){
+        std::cout << z << " " << x << " " << y;
+    }
+    else if (y > z && z > x){
+        std::cout << x << " " << z << " " << y;
+    }
+    // Z VARIATIONS
+    else if (z > y && y > x){
+        std::cout << x << " " << y << " " << z;
+    }
+    else if (z > x && x > y){
+        std::cout << y << " " << x << " " << z;
+    }
+    
+    return 0;
+}
