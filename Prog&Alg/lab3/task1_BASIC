@@ -1,0 +1,18 @@
+#include <iostream>
+#include <cmath>
+
+int main(){
+    
+    int a; // Вводимое пользователем число
+    
+    std::cout << "Enter the number: " << "\n";
+    std::cin >> a;
+    
+    if (!std::cin){
+        std::cout << "Wrong!" << std::endl;
+    } else {
+        std::cout << abs(a);
+    }
+    
+    return 0;
+}
