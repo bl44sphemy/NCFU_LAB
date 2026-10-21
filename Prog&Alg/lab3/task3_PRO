@@ -1,1 +1,33 @@
+#include <iostream>
 
+int main(){
+
+    int status;
+    double sale_kf;
+    int first_price;
+    int result;
+
+    std::cout << "Enter the price:\n";
+    std::cin >> first_price;
+
+    if (first_price > 5000){
+        sale_kf += 5;
+    }
+    
+    std::cout << "Select your status: \n" << "1. Employee\n" << "2. VIP-client\n" << "3. Ordinary client\n";
+    std::cin >> status;
+
+    if (status == 1){
+        sale_kf += 20;
+    } else if (status == 2){
+        sale_kf += 10;
+    }
+    
+    result = first_price - (first_price*(sale_kf/100));
+
+    std::cout << "Discount: " << sale_kf << "%\n";
+    std::cout << "Price with discount: " << result << "\n";
+
+    return 0;
+
+}
