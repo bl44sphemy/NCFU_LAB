@@ -12,6 +12,9 @@ int main(){
 
     if (first_price > 5000){
         sale_kf += 5;
+    } else if (first_price < 0){
+        std::cout << "Wrong! Enter price above 0";
+        return 0;
     }
     
     std::cout << "Select your status: \n" << "1. Employee\n" << "2. VIP-client\n" << "3. Ordinary client\n";
@@ -21,6 +24,11 @@ int main(){
         sale_kf += 20;
     } else if (status == 2){
         sale_kf += 10;
+    } else if (status==3){
+        sale_kf += 0;
+    } else {
+        std::cout << "Wrong! Choose 1-3!";
+        return 0;
     }
     
     result = first_price - (first_price*(sale_kf/100));
