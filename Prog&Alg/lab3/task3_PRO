@@ -10,6 +10,11 @@ int main(){
     std::cout << "Enter the price:\n";
     std::cin >> first_price;
 
+    if (!std::cin){
+        std::cout << "Enter numbers not letters!";
+        return 0;
+    }
+
     if (first_price > 5000){
         sale_kf += 5;
     } else if (first_price < 0){
