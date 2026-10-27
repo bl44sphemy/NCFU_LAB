@@ -1,0 +1,127 @@
+#include <iostream>
+#include <iomanip>
+#include <cmath>
+#include <limits>
+#include <windows.h>   // для SetConsoleCP / SetConsoleOutputCP
+
+// Подынтегральная функция f(x) = x^2
+double f(double x) {
+    return x * x;
+}
+
+// Аналитическое значение интеграла от a до b для f(x)=x^2
+double analyticalIntegral(double a, double b) {
+    return (b*b*b - a*a*a) / 3.0;
+}
+
+// Численное интегрирование методом трапеций
+// n – количество частичных отрезков (n >= 1)
+double trapezoidalIntegral(double a, double b, int n) {
+    double h = (b - a) / n;               // шаг
+    double sum = 0.0;                     // аккумулятор суммы
+
+    // Табуляция и накопление суммы
+    std::cout << "\nТабуляция подынтегральной функции:\n";
+    std::cout << "----------------------------------------\n";
+    std::cout << "  x        f(x)\n";
+    std::cout << "----------------------------------------\n";
+
+    for (int i = 0; i <= n; ++i) {
+        double x = a + i * h;
+        double y = f(x);
+
+        // Обработка особых точек (например, если f(x) не число)
+        if (std::isnan(y) || std::isinf(y)) {
+            std::cout << std::setw(6) << x << "   особая точка (пропуск)\n";
+            continue;   // пропускаем добавление в сумму
+        }
+
+        std::cout << std::fixed << std::setprecision(4)
+                  << std::setw(7) << x << "  "
+                  << std::setw(10) << y << "\n";
+
+        // Накопление суммы по формуле трапеций:
+        // на концах отрезка веса 1/2, внутри – 1
+        if (i == 0 || i == n)
+            sum += y / 2.0;
+        else
+            sum += y;
+    }
+
+    std::cout << "----------------------------------------\n";
+    return sum * h;
+}
+
+// Безопасный ввод числа с проверкой потока
+double safeInput(const std::string& prompt) {
+    double value;
+    while (true) {
+        std::cout << prompt;
+        std::cin >> value;
+
+        if (std::cin.fail()) {                     // проверка ошибки ввода
+            std::cin.clear();                       // сброс флагов
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // очистка буфера
+            std::cout << "Ошибка: введите число.\n";
+            continue;
+        }
+        // дополнительная очистка буфера от лишних символов
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        return value;
+    }
+}
+
+int main() {
+    // 🔧 Исправление кодировки консоли: теперь окно выводит UTF-8
+    SetConsoleCP(CP_UTF8);
+    SetConsoleOutputCP(CP_UTF8);
+
+    std::cout << "=== Вычисление интеграла методом трапеций ===\n";
+    std::cout << "Подынтегральная функция: f(x) = x^2\n";
+
+    do {
+        double a = safeInput("\nВведите нижний предел a: ");
+        double b = safeInput("Введите верхний предел b: ");
+
+        if (a >= b) {
+            std::cout << "Ошибка: должно быть a < b.\n";
+            continue;
+        }
+
+        int n;
+        while (true) {
+            std::cout << "Введите количество отрезков n (n >= 1): ";
+            std::cin >> n;
+
+            if (std::cin.fail() || n < 1) {
+                std::cin.clear();
+                std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                std::cout << "Ошибка: n должно быть целым числом >= 1.\n";
+                continue;
+            }
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            break;
+        }
+
+        // Вычисление численного интеграла
+        double numeric = trapezoidalIntegral(a, b, n);
+        double exact   = analyticalIntegral(a, b);
+        double error   = std::abs(numeric - exact);
+
+        std::cout << "\nРезультаты:\n";
+        std::cout << "Численный интеграл (метод трапеций): " << numeric << "\n";
+        std::cout << "Аналитическое значение:              " << exact << "\n";
+        std::cout << "Абсолютная погрешность:              " << error << "\n";
+
+        char again;
+        std::cout << "\nПовторить вычисления? (y/n): ";
+        std::cin >> again;
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+
+        if (again != 'y' && again != 'Y')
+            break;
+    } while (true);
+
+    std::cout << "Программа завершена.\n";
+    return 0;
+}
