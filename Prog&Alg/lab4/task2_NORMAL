@@ -1,0 +1,36 @@
+#include <iostream>
+
+int main(){
+
+    char user_input;
+
+    std::cout << "Enter your choice (number, character, symbol): \n";
+    std::cin >> user_input;
+
+    char low_user_input = tolower((unsigned char) user_input);
+
+    switch(low_user_input){
+
+        case 'a': case 'e': case 'i': case 'o': case 'u':
+            std::cout << "You choose vowel letter!";
+            break;
+
+        case 'b': case 'c': case 'd': case 'f': case 'g': case 'h':
+        case 'j': case 'k': case 'l': case 'm': case 'n': case 'p':
+        case 'q': case 'r': case 's': case 't': case 'v': case 'w':
+        case 'x': case 'z':
+            std::cout << "You choose consonant letter!";
+            break;
+
+        case '0': case '1': case '2': case '3': case '4': case '5':
+        case '6': case '7': case '8': case '9':
+            std::cout << "You choose number!";
+            break;
+            
+        default:
+            std::cout << "You choose symbol!";
+            break;
+    }
+
+    return 0;
+}
