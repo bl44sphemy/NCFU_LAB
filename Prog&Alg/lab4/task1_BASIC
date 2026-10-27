@@ -1,0 +1,30 @@
+#include <iostream>
+
+int main(){
+
+    int user_num;
+    
+    std::cout << "Enter number 1-4: \n";
+    std::cin >> user_num;
+
+    switch (user_num){
+        case 1:
+            std::cout << "North";
+            break;
+        case 2:
+            std::cout << "South";
+            break;
+        case 3:
+            std::cout << "West";
+            break;
+        case 4:
+            std::cout << "East";
+            break;
+        default:
+            std::cout << "Incorrect input!";
+            break;
+    }
+
+    return 0;
+    
+}
