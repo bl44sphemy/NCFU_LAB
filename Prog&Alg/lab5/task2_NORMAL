@@ -50,7 +50,7 @@ int main(){
     std::cout << "=================================" << std::endl;
 
     std::cout << "\nResult of searching maximum of the function: " << std::endl;
-    std::cout << "X: " << xMax << " | " << maxY << std::endl;
+    std::cout << "X: " << xMax << " | " << "Y: " << maxY << std::endl;
 
     return 0;
 }
