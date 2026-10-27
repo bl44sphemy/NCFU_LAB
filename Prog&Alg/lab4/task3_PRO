@@ -1,0 +1,41 @@
+#include <iostream>
+
+int main(){
+
+    int user_input;
+
+    std::cout << "Enter lesson number (1-8): \n";
+    std::cin >> user_input;
+
+    switch(user_input){
+        case 1:
+            std::cout << "Start: 8.00 | End: 8.45";
+            break;
+        case 2:
+            std::cout << "Start: 8.55 | End: 9.40";
+            break;
+        case 3:
+            std::cout << "Start: 9.50 | End: 10.35";
+            break;
+        case 4:
+            std::cout << "Start: 10.45 | End: 11.30";
+            break;
+        case 5:
+            std::cout << "Start: 11.50 | End: 12.35";
+            break;
+        case 6:
+            std::cout << "Start: 12.45 | End: 13.30";
+            break;
+        case 7:
+            std::cout << "Start: 13.40 | End: 14.25";
+            break;
+        case 8:
+            std::cout << "Start: 14.35 | End: 15.10";
+            break;
+        default:
+            std::cout << "Wrong input!";
+            break;
+    } 
+
+    return 0;
+}
