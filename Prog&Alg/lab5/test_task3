@@ -17,13 +17,13 @@ double analyticalIntegral(double a, double b) {
 // Численное интегрирование методом трапеций
 // n – количество частичных отрезков (n >= 1)
 double trapezoidalIntegral(double a, double b, int n) {
-    double h = (b - a) / n;               // шаг
-    double sum = 0.0;                     // аккумулятор суммы
+    double h = (b - a) / n;               
+    double sum = 0.0;                     
 
-    // Табуляция и накопление суммы
+
     std::cout << "\nТабуляция подынтегральной функции:\n";
     std::cout << "----------------------------------------\n";
-    std::cout << "  x        f(x)\n";
+    std::cout << "  x    |    f(x)\n";
     std::cout << "----------------------------------------\n";
 
     for (int i = 0; i <= n; ++i) {
@@ -33,15 +33,13 @@ double trapezoidalIntegral(double a, double b, int n) {
         // Обработка особых точек (например, если f(x) не число)
         if (std::isnan(y) || std::isinf(y)) {
             std::cout << std::setw(6) << x << "   особая точка (пропуск)\n";
-            continue;   // пропускаем добавление в сумму
+            continue;   
         }
 
         std::cout << std::fixed << std::setprecision(4)
                   << std::setw(7) << x << "  "
                   << std::setw(10) << y << "\n";
 
-        // Накопление суммы по формуле трапеций:
-        // на концах отрезка веса 1/2, внутри – 1
         if (i == 0 || i == n)
             sum += y / 2.0;
         else
@@ -52,27 +50,26 @@ double trapezoidalIntegral(double a, double b, int n) {
     return sum * h;
 }
 
-// Безопасный ввод числа с проверкой потока
+
 double safeInput(const std::string& prompt) {
     double value;
     while (true) {
         std::cout << prompt;
         std::cin >> value;
 
-        if (std::cin.fail()) {                     // проверка ошибки ввода
-            std::cin.clear();                       // сброс флагов
-            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // очистка буфера
+        if (std::cin.fail()) {                    
+            std::cin.clear();                       
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); 
             std::cout << "Ошибка: введите число.\n";
             continue;
         }
-        // дополнительная очистка буфера от лишних символов
         std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
         return value;
     }
 }
 
 int main() {
-    // 🔧 Исправление кодировки консоли: теперь окно выводит UTF-8
+
     SetConsoleCP(CP_UTF8);
     SetConsoleOutputCP(CP_UTF8);
 
@@ -103,7 +100,6 @@ int main() {
             break;
         }
 
-        // Вычисление численного интеграла
         double numeric = trapezoidalIntegral(a, b, n);
         double exact   = analyticalIntegral(a, b);
         double error   = std::abs(numeric - exact);
@@ -113,13 +109,7 @@ int main() {
         std::cout << "Аналитическое значение:              " << exact << "\n";
         std::cout << "Абсолютная погрешность:              " << error << "\n";
 
-        char again;
-        std::cout << "\nПовторить вычисления? (y/n): ";
-        std::cin >> again;
-        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-
-        if (again != 'y' && again != 'Y')
-            break;
+        break;
     } while (true);
 
     std::cout << "Программа завершена.\n";
